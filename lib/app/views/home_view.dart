@@ -26,58 +26,60 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 100, bottom: 20, left: 20, right: 20),
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/images/TATAKAE.jpg',
-                width: 150,
-                height: 150,
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              CurrencyBox(
-                selectedItem: homeController!.fromCurrency,
-                controller: fromText,
-                items: homeController!.currencies,
-                onChanged: (model) {
-                  setState(() {
-                    homeController!.fromCurrency = model;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              CurrencyBox(
-                selectedItem: homeController!.toCurrency,
-                controller: toText,
-                items: homeController!.currencies,
-                onChanged: (model) {
-                  setState(() {
-                    homeController!.toCurrency = model;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 50,
-              ),
-
-              // ignore: deprecated_member_use
-              RaisedButton(
-                color: Colors.amber,
-                onPressed: () {
-                  homeController!.convert();
-                },
-                child: Text('CONVERTER'),
-              )
-            ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 150, bottom: 20, left: 20, right: 20),
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/images/TATAKAE.jpg',
+                  width: 150,
+                  height: 150,
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                CurrencyBox(
+                  selectedItem: homeController!.fromCurrency,
+                  controller: fromText,
+                  items: homeController!.currencies,
+                  onChanged: (model) {
+                    setState(() {
+                      homeController!.fromCurrency = model;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                CurrencyBox(
+                  selectedItem: homeController!.toCurrency,
+                  controller: toText,
+                  items: homeController!.currencies,
+                  onChanged: (model) {
+                    setState(() {
+                      homeController!.toCurrency = model;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+      
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  color: Colors.amber,
+                  onPressed: () {
+                    homeController!.convert();
+                  },
+                  child: Text('CONVERTER'),
+                )
+              ],
+            ),
           ),
         ),
       ),
